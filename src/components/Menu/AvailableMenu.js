@@ -34,6 +34,7 @@ const DUMMY_MENU = [
 const AvailableMenu = () => {
   const menuList = DUMMY_MENU.map((item) => (
     <MenuItem
+      id={item.id}
       key={item.id}
       name={item.name}
       description={item.description}

@@ -1,5 +1,7 @@
 import styles from "./MenuItem.module.css";
 
+import MenuItemForm from "./MenuItemForm";
+
 const MenuItem = (props) => {
   return (
     <li className={styles.menu}>
@@ -8,7 +10,9 @@ const MenuItem = (props) => {
         <div className={styles.description}>{props.description}</div>
         <div className={styles.price}>{props.price}원</div>
       </div>
-      <div></div>
+      <div>
+        <MenuItemForm id={props.id} />
+      </div>
     </li>
   );
 };

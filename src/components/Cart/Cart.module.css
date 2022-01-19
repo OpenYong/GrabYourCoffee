@@ -1,0 +1,39 @@
+.item {
+  margin: 0;
+  padding: 0;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.btn {
+  text-align: right;
+}
+
+.btn button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ff5722;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  margin-left: 1rem;
+}
+
+.btn button:hover,
+.btn button:active {
+  background-color: #e64a19;
+  border-color: #e64a19;
+  color: white;
+}
+
+.btn .order {
+  background-color: #e64a19;
+  border-color: #e64a19;
+  color: white;
+}
