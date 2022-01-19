@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 5rem;
-  background-color: #795548;
+  background-color: #ff8a65;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -16,14 +16,14 @@
 
 .main-image {
   width: 100%;
-  height: 30rem;
-  z-index: 1;
+  height: 25rem;
+  z-index: 0;
   overflow: hidden;
 }
 
 .main-image img {
   width: 110%;
-  height: 120%;
+  height: 100%;
   object-fit: cover;
-  transform: rotateZ(-5deg) translateY(-10rem) translateX(-1rem);
+  transform: rotateZ(-5deg) translateY(-4rem) translateX(-1rem);
 }
