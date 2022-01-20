@@ -1,8 +1,20 @@
-import styles from "./MenuItem.module.css";
-
 import MenuItemForm from "./MenuItemForm";
+import styles from "./MenuItem.module.css";
+import { useContext } from "react";
+
+import CartContext from "../../../store/cart-context";
 
 const MenuItem = (props) => {
+  const cartCtx = useContext(CartContext);
+  const addToCartHandler = (amount) => {
+    cartCtx.addItem({
+      id: props.id,
+      name: props.name,
+      amount: amount,
+      price: props.price,
+    });
+  };
+
   return (
     <li className={styles.menu}>
       <div>
@@ -11,7 +23,7 @@ const MenuItem = (props) => {
         <div className={styles.price}>{props.price}원</div>
       </div>
       <div>
-        <MenuItemForm id={props.id} />
+        <MenuItemForm id={props.id} onAddToCart={addToCartHandler} />
       </div>
     </li>
   );

@@ -37,3 +37,27 @@
   border-color: #e64a19;
   color: white;
 }
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #ff5722;
+}
+.actions {
+  padding-top: 1.5rem;
+}
+
+.actions .price {
+  padding-right: 1rem;
+  font-size: 1.25rem;
+}
+
+.actions button {
+  border: 1px solid #ff5722;
+  border-radius: 5px;
+  background-color: white;
+  color: #ff5722;
+  padding: 0.25rem 0.5rem;
+  margin: 0 1rem;
+}

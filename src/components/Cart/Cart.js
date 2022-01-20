@@ -1,15 +1,36 @@
 import styles from "./Cart.module.css";
 
+import CartContext from "../../store/cart-context";
+
 import Modal from "../UI/Modal";
+import { useContext } from "react/cjs/react.development";
 
 const Cart = (props) => {
+  const cartCtx = useContext(CartContext);
+
+  const totalAmount = cartCtx.totalAmount;
+
+  const isCartEmpty = cartCtx.items.length <= 0;
+
+  const cartItemAddHandler = (item) => {};
+
+  const cartItemRemoveHandler = (id) => {};
+
   const cartItems = (
     <ul className={styles.item}>
-      {[{ id: "c1", name: "아메리카노", amount: 3, price: 2500 }].map(
-        (item) => (
-          <li key={item.id}>{item.name}</li>
-        )
-      )}
+      {cartCtx.items.map((item) => (
+        <li key={item.id} className={styles["cart-item"]}>
+          <div>
+            <h2>{item.name}</h2>
+          </div>
+          <div className={styles.actions}>
+            <span className={styles.price}>{item.price}원</span>
+            <button onClick={cartItemRemoveHandler}>-</button>
+            <span className={styles.amount}> {item.amount}</span>
+            <button onClick={cartItemAddHandler}>+</button>
+          </div>
+        </li>
+      ))}
     </ul>
   );
   return (
@@ -17,11 +38,11 @@ const Cart = (props) => {
       {cartItems}
       <div className={styles.total}>
         <span>합계</span>
-        <span>원</span>
+        <span>{totalAmount}원</span>
       </div>
       <div className={styles.btn}>
         <button onClick={props.onClose}>닫기</button>
-        <button className={styles.order}>주문하기</button>
+        {!isCartEmpty && <button className={styles.order}>주문하기</button>}
       </div>
     </Modal>
   );

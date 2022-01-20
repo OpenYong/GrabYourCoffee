@@ -4,6 +4,7 @@ import "./App.css";
 import Header from "./components/Layout/Header";
 import Menu from "./components/Menu/Menu";
 import Cart from "./components/Cart/Cart";
+import CartProvider from "./store/CartProvider";
 
 function App() {
   const [cartIsShow, setCartIsShown] = useState(false);
@@ -16,13 +17,13 @@ function App() {
     setCartIsShown(false);
   };
   return (
-    <Fragment>
+    <CartProvider>
       {cartIsShow && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
       <main>
         <Menu />
       </main>
-    </Fragment>
+    </CartProvider>
   );
 }
 
