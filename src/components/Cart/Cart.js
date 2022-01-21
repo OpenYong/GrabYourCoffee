@@ -12,9 +12,13 @@ const Cart = (props) => {
 
   const isCartEmpty = cartCtx.items.length <= 0;
 
-  const cartItemAddHandler = (item) => {};
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
 
-  const cartItemRemoveHandler = (id) => {};
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 });
+  };
 
   const cartItems = (
     <ul className={styles.item}>
@@ -25,9 +29,11 @@ const Cart = (props) => {
           </div>
           <div className={styles.actions}>
             <span className={styles.price}>{item.price}원</span>
-            <button onClick={cartItemRemoveHandler}>-</button>
+            <button onClick={cartItemRemoveHandler.bind(null, item.id)}>
+              -
+            </button>
             <span className={styles.amount}> {item.amount}</span>
-            <button onClick={cartItemAddHandler}>+</button>
+            <button onClick={cartItemAddHandler.bind(null, item)}>+</button>
           </div>
         </li>
       ))}
