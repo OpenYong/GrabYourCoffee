@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Grab Your Coffee 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React를 활용한 '온라인 커피 주문' 어플리케이션. 
+
 
 ## Available Scripts
 
