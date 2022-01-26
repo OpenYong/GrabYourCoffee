@@ -1,38 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "../UI/Card";
 import MenuItem from "./MenuItem/MenuItem";
 
 import styles from "./AvailableMenu.module.css";
-const DUMMY_MENU = [
-  {
-    id: "m1",
-    name: "아메리카노",
-    description: "에스프레소에 물타기",
-    price: 2500,
-  },
-  {
-    id: "m2",
-    name: "카페라떼",
-    description: "따뜻한 우유를 섞은",
-    price: 4000,
-  },
-  {
-    id: "m3",
-    name: "카푸치노",
-    description: "라떼보다 거품이 더 많은...",
-    price: 4000,
-  },
-  {
-    id: "m4",
-    name: "모카라떼",
-    description: "라떼에 초콜릿을...",
-    price: 4000,
-  },
-];
 
 const AvailableMenu = () => {
-  const menuList = DUMMY_MENU.map((item) => (
+  const [menu, setMenu] = useState([]);
+  const [hasError, setHasError] = useState();
+
+  useEffect(() => {
+    const fetchMenu = async () => {
+      const response = await fetch("");
+      if (!response.ok) {
+        throw new Error("데이터를 불러올 수 없습니다.");
+      }
+
+      const responseData = await response.json();
+
+      let menuData = [];
+
+      for (const key in responseData) {
+        menuData.push({
+          id: key,
+          name: responseData[key].name,
+          description: responseData[key].description,
+          price: responseData[key].price,
+        });
+      }
+      setMenu(menuData);
+    };
+
+    fetchMenu().catch((error) => {
+      setHasError(error.message);
+    });
+  }, []);
+
+  if (hasError) {
+    return (
+      <section className={styles.MenuError}>
+        <p>{hasError}</p>
+      </section>
+    );
+  }
+
+  const menuList = menu.map((item) => (
     <MenuItem
       id={item.id}
       key={item.id}
