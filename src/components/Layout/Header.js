@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 import HeaderCartButton from "./HeaderCartButton";
-import coffeeImage from "../../assets/coffee-bar.jpg";
+import HeaderLoginButton from "./HeaderLoginButton";
 import styles from "./Header.module.css";
 
 const Header = (props) => {
@@ -9,11 +9,12 @@ const Header = (props) => {
     <Fragment>
       <header className={styles.header}>
         <h1>Grab Your Coffee</h1>
-        <HeaderCartButton onClick={props.onShowCart} />
+        <div className={styles.buttonContainer}>
+          <HeaderLoginButton />
+          <span className={styles.seperator}></span>
+          <HeaderCartButton onClick={props.onShowCart} />
+        </div>
       </header>
-      <div className={styles["main-image"]}>
-        <img src={coffeeImage} alt="커피바 사진" />
-      </div>
     </Fragment>
   );
 };

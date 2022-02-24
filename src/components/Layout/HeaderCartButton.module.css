@@ -2,19 +2,16 @@
   cursor: pointer;
   font: inherit;
   border: none;
-  background-color: #ff5722;
-  color: white;
-  padding: 0.75rem 3rem;
+  background-color: white;
+  color: black;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-radius: 25px;
   font-weight: bold;
 }
 
 .button:hover,
 .button:active {
-  background-color: #e64a19;
 }
 
 .icon {
@@ -24,16 +21,19 @@
 }
 
 .badge {
-  background-color: #ff8a65;
-  padding: 0.25rem 1rem;
+  background-color: #1565c0;
+  padding: 0.25rem 0.5rem;
   border-radius: 25px;
-  margin-left: 1rem;
-  font-weight: bold;
+  font-size: 0.5rem;
+  position: relative;
+  right: 18px;
+  bottom: 15px;
+  color: white;
 }
 
 .button:hover .badge,
 .button:active .badge {
-  background-color: #ff5722;
+  background-color: #0d47a1;
 }
 
 .bump {

@@ -1,0 +1,19 @@
+.button {
+  cursor: pointer;
+  font: inherit;
+  border: none;
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+}
+
+.button:hover,
+.button:active {
+}
+
+.seperator {
+  border-right: 1px solid black;
+}

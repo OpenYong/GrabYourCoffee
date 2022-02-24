@@ -35,10 +35,10 @@ const HeaderCartButton = (props) => {
       className={`${styles.button} ${btnUpdated ? styles.bump : ""} `}
       onClick={props.onClick}
     >
+      <span>CART</span>
       <span className={styles.icon}>
         <CartIcon />
       </span>
-      <span>장바구니</span>
       <span className={styles.badge}>{numberOfCartItems}</span>
     </button>
   );

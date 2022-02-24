@@ -11,7 +11,9 @@ const AvailableMenu = () => {
 
   useEffect(() => {
     const fetchMenu = async () => {
-      const response = await fetch("");
+      const response = await fetch(
+        "https://grab-your-coffee-default-rtdb.firebaseio.com/menu.json"
+      );
       if (!response.ok) {
         throw new Error("데이터를 불러올 수 없습니다.");
       }

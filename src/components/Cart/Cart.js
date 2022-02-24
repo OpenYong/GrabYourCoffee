@@ -32,13 +32,16 @@ const Cart = (props) => {
 
   const submitOrderHandler = async (userData) => {
     setIsSubmitting(true);
-    await fetch("", {
-      method: "POST",
-      body: JSON.stringify({
-        user: userData,
-        orderedMenuItems: cartCtx.items,
-      }),
-    });
+    await fetch(
+      "https://grab-your-coffee-default-rtdb.firebaseio.com/orders.json",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          user: userData,
+          orderedMenuItems: cartCtx.items,
+        }),
+      }
+    );
     setIsSubmitting(false);
     setDidSubmit(true);
 
