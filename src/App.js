@@ -7,6 +7,7 @@ import Header from "./components/Layout/Header";
 import Menu from "./components/Menu/Menu";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
+import { AuthProvider } from "./store/auth-context";
 import MainPage from "./pages/MainPage";
 import UserPage from "./pages/UserPage";
 
@@ -21,16 +22,18 @@ function App() {
     setCartIsShown(false);
   };
   return (
-    <CartProvider>
-      {cartIsShow && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler} />
-      <main>
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/user/*" element={<UserPage />} />
-        </Routes>
-      </main>
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        {cartIsShow && <Cart onClose={hideCartHandler} />}
+        <Header onShowCart={showCartHandler} />
+        <main>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/user/*" element={<UserPage />} />
+          </Routes>
+        </main>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 
