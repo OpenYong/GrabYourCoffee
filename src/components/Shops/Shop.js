@@ -1,14 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Shop.module.css";
 
 const Shop = (props) => {
   const shopData = props.shopData;
 
-  const shopClickHandler = (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
 
-    console.log("click");
+  const shopClickHandler = (e) => {
+    navigate(`/shops/${shopData.id}`);
   };
   return (
     <div className={styles["shop-container"]} onClick={shopClickHandler}>

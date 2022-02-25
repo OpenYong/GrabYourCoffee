@@ -42,7 +42,6 @@ const Login = () => {
         );
         authCtx.login(resData.token, expTime);
       })
-      .then()
       .catch((error) => {
         console.log(error);
       });

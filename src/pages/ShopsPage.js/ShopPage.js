@@ -2,14 +2,22 @@ import React from "react";
 
 import { useParams } from "react-router-dom";
 
+import styles from "./ShopPage.module.css";
+
+import Menu from "../../components/Menu/Menu";
+
+import ShopDetail from "../../components/Shops/ShopDetail";
+
+import AvailableMenu from "../../components/Menu/AvailableMenu";
+
 const ShopPage = () => {
   const params = useParams();
-
-  console.log(params.shopId);
+  const shopId = params.shopId;
 
   return (
     <div>
-      <h1>asdassadasd</h1>
+      <ShopDetail shopId={shopId} />
+      <AvailableMenu />
     </div>
   );
 };
