@@ -1,14 +1,17 @@
 import React from "react";
-import { Fragment } from "react/cjs/react.development";
 
 import AvailableShops from "./AvailableShops";
 
+import styles from "./Shops.module.css";
+
 const Shops = () => {
   return (
-    <Fragment>
-      <div>인기 있는 카페</div>
+    <div className={styles["shops-container"]}>
+      <div className={styles.header}>
+        <h2>인기 있는 카페</h2>
+      </div>
       <AvailableShops />
-    </Fragment>
+    </div>
   );
 };
 

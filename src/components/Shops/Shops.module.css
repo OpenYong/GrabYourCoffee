@@ -1,0 +1,14 @@
+.shops-container {
+  padding: 0 3rem;
+}
+
+.header {
+  border: 1px solid red;
+  margin-bottom: 2rem;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 500;
+}

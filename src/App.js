@@ -9,7 +9,8 @@ import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
 import { AuthProvider } from "./store/auth-context";
 import MainPage from "./pages/MainPage";
-import UserPage from "./pages/UserPage";
+import UserPage from "./pages/UserPage/UserPage";
+import ShopPage from "./pages/ShopsPage.js/ShopPage";
 
 function App() {
   const [cartIsShow, setCartIsShown] = useState(false);
@@ -30,6 +31,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/user/*" element={<UserPage />} />
+            <Route path="/shops/:shopId" element={<ShopPage />} />
           </Routes>
         </main>
       </CartProvider>

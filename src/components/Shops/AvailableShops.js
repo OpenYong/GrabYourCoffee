@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import Shop from "./Shop";
 
+import styles from "./AvailableShops.module.css";
+
 const AvailableShops = () => {
   const [shops, setShops] = useState([]);
 
@@ -13,15 +15,14 @@ const AvailableShops = () => {
 
       let shopsData = [];
 
-      console.log(responseData);
-
       for (const key in responseData) {
         shopsData.push({
-          id: key,
+          id: responseData[key]._id,
           shopName: responseData[key].shopName,
           description: responseData[key].description,
           hasParkingLot: responseData[key].hasParkingLot,
           hasTables: responseData[key].hasTables,
+          imageUrl: responseData[key].imageUrl,
         });
       }
       setShops(shopsData);
@@ -29,13 +30,9 @@ const AvailableShops = () => {
     fetchShopLists();
   }, []);
 
-  const shopLists = shops.map(() => <Shop />);
+  const shopLists = shops.map((shop) => <Shop key={shop.id} shopData={shop} />);
 
-  return (
-    <div>
-      <ul>{shopLists}</ul>
-    </div>
-  );
+  return <div className={styles["shops-container"]}>{shopLists}</div>;
 };
 
 export default AvailableShops;

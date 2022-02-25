@@ -1,11 +1,21 @@
 import React from "react";
 
-const Shop = () => {
+import styles from "./Shop.module.css";
+
+const Shop = (props) => {
+  const shopData = props.shopData;
+
+  const shopClickHandler = (e) => {
+    e.preventDefault();
+
+    console.log("click");
+  };
   return (
-    <li>
-      <div>이미지</div>
-      <div>카페 설명</div>
-    </li>
+    <div className={styles["shop-container"]} onClick={shopClickHandler}>
+      <div className={styles.img}>이미지</div>
+      <div className={styles.title}>{shopData.shopName}</div>
+      <div className={styles.description}>{shopData.description}</div>
+    </div>
   );
 };
 

@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 
-import AuthContext from "../store/auth-context";
-import Account from "../components/User/Account";
-import Login from "../components/User/Login";
-import Signup from "../components/User/Signup";
+import AuthContext from "../../store/auth-context";
+import Login from "../../components/User/Login";
+import Signup from "../../components/User/Signup";
+
+import AccountPage from "./AccountPage/AccountPage";
 
 const UserPage = () => {
   const authCtx = useContext(AuthContext);
@@ -24,10 +25,10 @@ const UserPage = () => {
             <Route path="register" element={<Signup />} />
           )}
           <Route
-            path="account"
+            path="account/*"
             element={
               authCtx.isLoggedIn ? (
-                <Account />
+                <AccountPage />
               ) : (
                 <Navigate replace to="/user/login" />
               )

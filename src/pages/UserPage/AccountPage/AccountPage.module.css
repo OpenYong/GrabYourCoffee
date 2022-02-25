@@ -1,0 +1,11 @@
+.account-container {
+  width: 60rem;
+  padding: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.account-sidebar {
+  width: 25%;
+  border: 1px solid red;
+}
