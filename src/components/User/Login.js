@@ -37,8 +37,12 @@ const Login = () => {
       })
       .then((resData) => {
         console.log(resData);
-        authCtx.login(resData.token);
+        const expTime = new Date(
+          new Date().getTime() + resData.expiresIn * 1000
+        );
+        authCtx.login(resData.token, expTime);
       })
+      .then()
       .catch((error) => {
         console.log(error);
       });
