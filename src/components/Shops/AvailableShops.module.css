@@ -1,6 +1,5 @@
 .shops-container {
   height: 20rem;
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
 }

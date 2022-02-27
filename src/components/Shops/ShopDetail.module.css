@@ -8,5 +8,10 @@
   margin-bottom: 1.5rem;
 }
 
+.detail-container h3 {
+  padding: 0.25rem 0;
+  border-bottom: 0.0625rem solid #dedede;
+}
+
 .description {
 }

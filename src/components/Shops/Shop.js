@@ -13,7 +13,9 @@ const Shop = (props) => {
   };
   return (
     <div className={styles["shop-container"]} onClick={shopClickHandler}>
-      <div className={styles.img}>이미지</div>
+      <div className={styles.img}>
+        <img src={shopData.imageUrl} />
+      </div>
       <div className={styles.title}>{shopData.shopName}</div>
       <div className={styles.description}>{shopData.description}</div>
     </div>

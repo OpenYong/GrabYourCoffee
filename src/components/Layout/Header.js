@@ -14,7 +14,9 @@ const Header = (props) => {
   return (
     <Fragment>
       <header className={styles.header}>
-        <h1>Grab Your Coffee</h1>
+        <span className={styles.logo}>
+          <Link to="/">Grab Your Coffee</Link>
+        </span>
         <div className={styles.buttonContainer}>
           {!isLoggedIn && (
             <Link to="/user/login" className={`${styles.button}  `}>

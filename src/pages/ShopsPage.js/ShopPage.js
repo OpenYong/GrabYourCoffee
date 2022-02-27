@@ -15,9 +15,10 @@ const ShopPage = () => {
   const shopId = params.shopId;
 
   return (
-    <div>
+    <div className={styles.main}>
       <ShopDetail shopId={shopId} />
-      <AvailableMenu />
+      <Menu shopId={shopId} />
+      {/* <AvailableMenu shopId={shopId} /> */}
     </div>
   );
 };

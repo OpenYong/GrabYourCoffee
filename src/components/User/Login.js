@@ -1,12 +1,15 @@
 import React, { useRef, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import AuthContext from "../../store/auth-context";
+import InputLarge from "../UI/InputLarge";
 
-import { Link } from "react-router-dom";
+import styles from "./Login.module.css";
 
-const Login = () => {
+const Login = (props) => {
   const emailInput = useRef();
   const passwordInput = useRef();
+  const Navigate = useNavigate();
 
   const authCtx = useContext(AuthContext);
 
@@ -45,22 +48,36 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
       });
+    Navigate("/");
   };
 
   return (
-    <div>
-      <div>
+    <div className={styles.main}>
+      <div className={styles.sidebar}>
         <span>안녕하세요 :) 로그인 해주세요.</span>
         <span>
           처음 오셨나요? <Link to="/user/register">회원 가입 하기</Link>
         </span>
       </div>
-      <div>
-        <form onSubmit={loginHandler}>
-          <input name="email" placeholder="이메일" ref={emailInput} />
-          <br />
-          <input name="password" placeholder="비밀번호" ref={passwordInput} />
-          <br />
+      <div className={styles.article}>
+        <form onSubmit={loginHandler} className={styles.form}>
+          <InputLarge
+            ref={emailInput}
+            label="E-mail"
+            input={{
+              id: "email",
+              type: "text",
+            }}
+          />
+          <InputLarge
+            ref={passwordInput}
+            label="Password"
+            input={{
+              id: "password",
+              type: "Password",
+              min: "3",
+            }}
+          />
           <button>로그인</button>
         </form>
       </div>

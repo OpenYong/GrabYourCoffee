@@ -4,7 +4,7 @@ import styles from "./ShopDetail.module.css";
 
 const ShopDetail = (props) => {
   const shopId = props.shopId;
-  const [shopData, setShopData] = useState();
+  const [shopData, setShopData] = useState({});
 
   useEffect(() => {
     const fetchShopLists = async (shopId) => {
@@ -15,8 +15,13 @@ const ShopDetail = (props) => {
       }
 
       const responseData = await response.json();
-
-      setShopData(responseData.shop);
+      setShopData({
+        shopName: responseData.shop.shopName,
+        imageUrl: `http://localhost:8080/${responseData.shop.imageUrl}`,
+        description: responseData.shop.description,
+        hasParkingLot: responseData.shop.hasParkingLot,
+        hasTables: responseData.shop.hasTables,
+      });
     };
     fetchShopLists(shopId).catch((error) => {
       console.log(error);
@@ -32,9 +37,9 @@ const ShopDetail = (props) => {
       </div>
       <div>카페 위치</div>
       <div className={styles.img}>
-        <img src="" />
+        <img src={shopData.imageUrl} />
       </div>
-      <div>
+      <div className={styles["description-container"]}>
         <h3>소개</h3>
         <div className={styles.description}>{shopData.description}</div>
       </div>

@@ -1,0 +1,29 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  height: 25rem;
+  align-items: center;
+}
+
+.sidebar {
+  width: 50%;
+  height: 100%;
+  padding: 6rem 4rem;
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.article {
+  width: 50%;
+  height: 100%;
+  padding: 6rem 4rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form {
+}

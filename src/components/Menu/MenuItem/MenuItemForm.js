@@ -38,7 +38,7 @@ const MenuItemForm = (props) => {
           defaultValue: "1",
         }}
       />
-      <button>+ 담기</button>
+      <button>담기</button>
       {!amountIsValid && <p>올바른 수량을 입력해주세요.</p>}
     </form>
   );

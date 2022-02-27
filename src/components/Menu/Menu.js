@@ -1,14 +1,13 @@
 import React from "react";
 
-import MenuSummary from "./MenuSummary";
 import AvailableMenu from "./AvailableMenu";
 import { Fragment } from "react/cjs/react.production.min";
 
-const Menu = () => {
+const Menu = (props) => {
+  const shopId = props.shopId;
   return (
     <Fragment>
-      <MenuSummary />
-      <AvailableMenu />
+      <AvailableMenu shopId={shopId} />
     </Fragment>
   );
 };

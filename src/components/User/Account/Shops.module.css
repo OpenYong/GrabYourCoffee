@@ -1,4 +1,37 @@
 .shops-container {
-  border: 1px solid black;
   width: 75%;
+}
+
+.shops-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+h1 {
+  margin: 0;
+}
+
+.btn a {
+  width: 9rem;
+  height: 3rem;
+  background-color: black;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn a:hover {
+  background-color: #212121;
+  color: white;
+}
+
+.btn a:active {
+  background-color: #212121;
+  color: white;
 }

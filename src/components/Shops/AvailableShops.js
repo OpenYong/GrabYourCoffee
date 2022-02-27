@@ -22,7 +22,7 @@ const AvailableShops = () => {
           description: responseData[key].description,
           hasParkingLot: responseData[key].hasParkingLot,
           hasTables: responseData[key].hasTables,
-          imageUrl: responseData[key].imageUrl,
+          imageUrl: `http://localhost:8080/${responseData[key].imageUrl}`,
         });
       }
       setShops(shopsData);

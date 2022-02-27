@@ -1,97 +1,68 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styles from "./Shops.module.css";
 
 import Modal from "../../UI/Modal";
+import AuthContext from "../../../store/auth-context";
+import AccountItem from "./AccountItem";
+import Card from "../../UI/Card";
+import { Link } from "react-router-dom";
 
 const Shops = () => {
-  const [showRegister, setShowRegister] = useState(false);
+  const [shopData, setShopData] = useState([]);
+  const authCtx = useContext(AuthContext);
 
-  const nameInput = useRef();
-  const descriptionInput = useRef();
-  const hasTablesInput = useRef();
-  const hasParkingLotInput = useRef();
+  const token = authCtx.token;
 
-  const clickRegisterHandler = () => {
-    setShowRegister(true);
-  };
-
-  const registerHandler = async (e) => {
-    e.preventDefault();
-
-    const enteredName = nameInput.current.value;
-    const enteredDescription = descriptionInput.current.value;
-    const enteredTableOption = hasTablesInput.current.checked;
-    const enteredParkingOption = hasParkingLotInput.current.checked;
-
-    await fetch("http://localhost:8080/shop/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: enteredName,
-        description: enteredDescription,
-        hasTables: enteredTableOption,
-        hasParkingLot: enteredParkingOption,
-      }),
-    })
-      .then((res) => {
-        if (res.status !== 200 && res.status !== 201) {
-          throw new Error("카페 등록 실패");
-        }
-        return res.json();
-      })
-      .then((resData) => {
-        console.log(resData);
-      })
-      .catch((error) => {
-        console.log(error);
+  useEffect(() => {
+    const fetchShopLists = async () => {
+      const response = await fetch(`http://localhost:8080/shop/myshops`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
-  };
 
-  const modalContent = (
-    <React.Fragment>
-      <h1>카페 등록</h1>
-      <div>
-        <form>
-          <div>
-            <label htmlFor="name">카페 이름</label>
-            <input type="text" id="name" ref={nameInput} />
-          </div>
-          <div>
-            <label htmlFor="description">설명</label>
-            <input type="textarea" id="description" ref={descriptionInput} />
-          </div>
-          <div>
-            <input
-              type="checkbox"
-              id="hasTables"
-              name="hasTables"
-              ref={hasTablesInput}
-            />
-            <label htmlFor="hasTables">테이블</label>
-            <input
-              type="checkbox"
-              id="hasParkingLot"
-              name="hasParkingLot"
-              ref={hasParkingLotInput}
-            />
-            <label htmlFor="name">주차장</label>
-          </div>
-          <button onClick={registerHandler}>등록</button>
-        </form>
-      </div>
-    </React.Fragment>
-  );
+      if (response.status === 404) {
+        throw new Error("찾을 수 없는 데이터");
+      }
+
+      const responseData = await response.json();
+
+      let shopsData = [];
+
+      for (const key in responseData.shops) {
+        shopsData.push({
+          id: responseData.shops[key]._id,
+          shopName: responseData.shops[key].shopName,
+          description: responseData.shops[key].description,
+          hasParkingLot: responseData.shops[key].hasParkingLot,
+          hasTables: responseData.shops[key].hasTables,
+          imageUrl: `http://localhost:8080/${responseData.shops[key].imageUrl}`,
+        });
+      }
+
+      setShopData(shopsData);
+    };
+
+    fetchShopLists().catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+  console.log(shopData);
+
+  const shopLists = shopData.map((shop) => (
+    <AccountItem key={shop.id} shopData={shop} />
+  ));
 
   return (
     <div className={styles["shops-container"]}>
-      {showRegister && <Modal>{modalContent}</Modal>}
-      <h1>카페 관리</h1>
-      <div>
-        <button onClick={clickRegisterHandler}>등록</button>
+      <div className={styles["shops-header"]}>
+        <h1>카페 관리</h1>
+        <div className={styles.btn}>
+          <Link to="register">등록</Link>
+        </div>
       </div>
-      <div>리스트</div>
+      {shopLists}
     </div>
   );
 };

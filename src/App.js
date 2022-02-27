@@ -6,8 +6,10 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import Menu from "./components/Menu/Menu";
 import Cart from "./components/Cart/Cart";
+
 import CartProvider from "./store/CartProvider";
 import { AuthProvider } from "./store/auth-context";
+
 import MainPage from "./pages/MainPage";
 import UserPage from "./pages/UserPage/UserPage";
 import ShopPage from "./pages/ShopsPage.js/ShopPage";
