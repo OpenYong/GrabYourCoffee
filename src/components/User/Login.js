@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 import AuthContext from "../../store/auth-context";
 import InputLarge from "../UI/InputLarge";
+import LoginSignupUI from "../UI/LoginSignupUI";
 
-import styles from "./Login.module.css";
+import styles from "../UI/LoginSignupUI.module.css";
 
 const Login = (props) => {
   const emailInput = useRef();
@@ -19,7 +20,7 @@ const Login = (props) => {
     const enteredEmail = emailInput.current.value;
     const enteredPassword = passwordInput.current.value;
 
-    await fetch("http://localhost:8080/auth/login", {
+    fetch("http://localhost:8080/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,20 +45,20 @@ const Login = (props) => {
           new Date().getTime() + resData.expiresIn * 1000
         );
         authCtx.login(resData.token, expTime);
+        Navigate("/");
       })
       .catch((error) => {
         console.log(error);
       });
-    Navigate("/");
   };
 
   return (
-    <div className={styles.main}>
+    <LoginSignupUI>
       <div className={styles.sidebar}>
-        <span>안녕하세요 :) 로그인 해주세요.</span>
-        <span>
+        <h1>안녕하세요 :) 로그인 해주세요.</h1>
+        <h2>
           처음 오셨나요? <Link to="/user/register">회원 가입 하기</Link>
-        </span>
+        </h2>
       </div>
       <div className={styles.article}>
         <form onSubmit={loginHandler} className={styles.form}>
@@ -78,10 +79,12 @@ const Login = (props) => {
               min: "3",
             }}
           />
-          <button>로그인</button>
+          <div>
+            <button className={styles.btn}>로그인</button>
+          </div>
         </form>
       </div>
-    </div>
+    </LoginSignupUI>
   );
 };
 

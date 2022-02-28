@@ -1,6 +1,11 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 
+import InputLarge from "../UI/InputLarge";
+import LoginSignupUI from "../UI/LoginSignupUI";
+
+import styles from "../UI/LoginSignupUI.module.css";
+
 const Signup = () => {
   const nameInput = useRef();
   const emailInput = useRef();
@@ -39,25 +44,44 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <div>
-        <span>회원가입을 해봅시다!</span>
-        <span>
+    <LoginSignupUI>
+      <div className={styles.sidebar}>
+        <h1>회원가입을 해봅시다!</h1>
+        <h2>
           이미 계정이 있으신가요? <Link to="/user/login">로그인하기</Link>
-        </span>
+        </h2>
       </div>
-      <div>
+      <div className={styles.article}>
         <form onSubmit={signupHandler}>
-          <input name="name" placeholder="이름" ref={nameInput} />
-          <br />
-          <input name="email" placeholder="이메일" ref={emailInput} />
-          <br />
-          <input name="password" placeholder="비밀번호" ref={passwordInput} />
-          <br />
-          <button>확인</button>
+          <InputLarge
+            ref={nameInput}
+            label="이름"
+            input={{
+              id: "name",
+              type: "text",
+            }}
+          />{" "}
+          <InputLarge
+            ref={nameInput}
+            label="E-mail"
+            input={{
+              id: "email",
+              type: "text",
+            }}
+          />{" "}
+          <InputLarge
+            ref={passwordInput}
+            label="Password"
+            input={{
+              id: "password",
+              type: "Password",
+              min: "3",
+            }}
+          />
+          <button className={styles.btn}>확인</button>
         </form>
       </div>
-    </div>
+    </LoginSignupUI>
   );
 };
 

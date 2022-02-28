@@ -1,3 +1,10 @@
+.header > h1 {
+  font-size: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 0.0625rem solid #dedede;
+  font-weight: 500;
+}
+
 .item {
   margin: 0;
   padding: 0;
@@ -7,16 +14,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: bold;
-  font-size: 1.5rem;
+  font-weight: 400;
+  font-size: 1.25rem;
   margin: 1rem 0;
 }
 
-.btn {
+.total > h1 {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.btn-container {
   text-align: right;
 }
 
-.btn button {
+.btn-container button {
   cursor: pointer;
   background-color: transparent;
   border: 1px solid #ff5722;
@@ -25,20 +37,20 @@
   margin-left: 1rem;
 }
 
-.btn button:hover,
-.btn button:active {
+.btn-container button:hover,
+.btn-container button:active {
   background-color: #ffe6dc;
   border-color: #e64a19;
 }
 
-.btn .order {
+.btn-container .order {
   background-color: #e64a19;
   border-color: #e64a19;
   color: white;
 }
 
-.btn .order:hover,
-.btn .order:active {
+.btn-container .order:hover,
+.btn-container .order:active {
   background-color: #d84315;
   border-color: #e64a19;
 }

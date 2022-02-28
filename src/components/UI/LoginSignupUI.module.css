@@ -1,0 +1,57 @@
+.main-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 30rem;
+  max-height: 40rem;
+  height: calc(100vh - 40vh);
+  align-items: center;
+}
+
+.main-container > h1 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.main-container > h2 {
+  font-size: 1rem;
+  font-weight: 100;
+  margin-top: 4rem;
+}
+
+.sidebar {
+  width: 50%;
+  height: 100%;
+  padding: 6rem 4rem;
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.article {
+  width: 50%;
+  height: 100%;
+  padding: 6rem 4rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.article > button {
+  width: 20rem;
+}
+
+.btn {
+  margin-top: 1rem;
+  border: 0;
+  width: 20rem;
+  height: 3.75rem;
+  text-align: center;
+  appearance: none;
+  background-color: #c8c8c8;
+  color: #404040;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}

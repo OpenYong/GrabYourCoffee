@@ -65,16 +65,19 @@ const Cart = (props) => {
 
   const modalContent = (
     <React.Fragment>
+      <div className={styles.header}>
+        <h1>카트</h1>
+      </div>
       {cartItems}
       <div className={styles.total}>
-        <span>합계</span>
+        <h1>합계</h1>
         <span>{totalAmount}원</span>
       </div>
       {isCheckout && (
         <Checkout onSubmit={submitOrderHandler} onClose={props.onClose} />
       )}
       {!isCheckout && (
-        <div className={styles.btn}>
+        <div className={styles["btn-container"]}>
           <button onClick={props.onClose}>닫기</button>
           {!isCartEmpty && (
             <button className={styles.order} onClick={orderHandler}>
