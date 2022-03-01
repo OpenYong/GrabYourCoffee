@@ -37,7 +37,6 @@ function App() {
       try {
         const setDataFunc = (objData) => {
           console.log(objData.cart);
-
           cartCtx.replaceCart(objData.cart);
         };
 
@@ -61,33 +60,7 @@ function App() {
       isFirstLoading = false;
       return;
     }
-
-    const fetchData = async () => {
-      const response = await fetch("http://localhost:8080/user/cart", {
-        method: "PUT",
-        body: JSON.stringify({
-          items: cartCtx.items,
-          totalAmount: +cartCtx.totalAmount,
-        }),
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.status === 404) {
-        throw new Error("찾을 수 없는 데이터");
-      }
-
-      const responseData = await response.json();
-
-      console.log(responseData);
-    };
-
     if (cartCtx.changed) {
-      // console.log(cartCtx.changed);
-
-      // fetchData();
       const setDataFunc = (objData) => {
         console.log(objData);
       };
@@ -98,6 +71,7 @@ function App() {
           body: JSON.stringify({
             items: cartCtx.items,
             totalAmount: +cartCtx.totalAmount,
+            shopId: cartCtx.shopId,
           }),
           headers: {
             Authorization: `Bearer ${token}`,

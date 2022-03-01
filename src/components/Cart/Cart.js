@@ -1,21 +1,28 @@
 import React, { useContext, useState } from "react";
 
-import styles from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
+import AuthContext from "../../store/auth-context";
+
 import Modal from "../UI/Modal";
 import Checkout from "./Checkout";
 import CartItem from "./CartItem";
 
+import styles from "./Cart.module.css";
+
+import useHttp from "../../hooks/use-http";
+
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
   console.log(`테스트 : ${didSubmit}`);
 
+  const { sendRequest, error, isLoading } = useHttp();
+
+  const authCtx = useContext(AuthContext);
   const cartCtx = useContext(CartContext);
 
+  const token = authCtx.token;
   const totalAmount = cartCtx.totalAmount;
-
   const isCartEmpty = cartCtx.items.length <= 0;
 
   const cartItemRemoveHandler = (id) => {
@@ -31,20 +38,29 @@ const Cart = (props) => {
   };
 
   const submitOrderHandler = async (userData) => {
-    setIsSubmitting(true);
-    await fetch(
-      "https://grab-your-coffee-default-rtdb.firebaseio.com/orders.json",
+    console.log(cartCtx);
+    const requestFunc = (dataObj) => {
+      console.log(dataObj);
+    };
+    sendRequest(
       {
+        url: `http://localhost:8080/user/order/${cartCtx.shopId}`,
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
-          user: userData,
-          orderedMenuItems: cartCtx.items,
+          tel: userData.tel,
+          orderedItems: cartCtx.items,
+          totalAmount: cartCtx.totalAmount,
+          request: userData.request ? userData.request : "요청사항 없음",
         }),
-      }
+      },
+      requestFunc
     );
-    setIsSubmitting(false);
-    setDidSubmit(true);
 
+    setDidSubmit(true);
     cartCtx.clearCart();
   };
 
@@ -92,6 +108,7 @@ const Cart = (props) => {
   return (
     <Modal onClose={props.onClose}>
       {!didSubmit && modalContent}
+      {isLoading && <span>주문을 요청중입니다.</span>}
       {didSubmit && <span>주문이 완료되었습니다.</span>}
     </Modal>
   );

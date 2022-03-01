@@ -11,31 +11,29 @@ const Checkout = (props) => {
     tel: true,
   });
 
-  const nameInput = useRef();
+  const requestInput = useRef();
   const telInput = useRef();
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const enteredName = nameInput.current.value;
+    const enteredRequest = requestInput.current.value;
     const enteredTel = telInput.current.value;
 
-    const nameIsValid = !isEmpty(enteredName);
     const telisValid = !isEmpty(enteredTel) && isElevenDigit(enteredTel);
 
     setFormInputValidation({
-      name: nameIsValid,
       tel: telisValid,
     });
 
-    const formIsValid = nameIsValid && telisValid;
+    const formIsValid = telisValid;
 
     if (!formIsValid) {
       return;
     }
 
     props.onSubmit({
-      name: enteredName,
+      request: enteredRequest,
       tel: enteredTel,
     });
   };
@@ -47,9 +45,8 @@ const Checkout = (props) => {
           formInputValidation.name ? "" : styles.invalid
         }`}
       >
-        <label htmlFor="name">성함</label>
-        <input type="text" id="name" ref={nameInput} />
-        {!formInputValidation.name && <span>성함을 입력해주세요</span>}
+        <label htmlFor="request">요청사항</label>
+        <input type="textarea" id="request" ref={requestInput} />
       </div>
       <div
         className={`${styles.control}  ${

@@ -80,9 +80,7 @@ const AccountPage = () => {
         </div>
         <Routes>
           <Route path="profile" element={<Profile />} />
-
-          <Route path="orders" element={<Orders />} />
-
+          <Route path="orders" element={<Orders token={token} />} />
           <Route path="shops" element={<Shops />} />
           <Route path="shops/register" element={<ShopRegister />} />
           <Route path="shops/details/:shopId" element={<ShopManagement />} />

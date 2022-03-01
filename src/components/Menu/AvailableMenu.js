@@ -48,6 +48,7 @@ const AvailableMenu = (props) => {
       name={item.name}
       description={item.description}
       price={item.price}
+      shopId={shopId}
     />
   ));
 

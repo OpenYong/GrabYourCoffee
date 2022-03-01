@@ -10,12 +10,16 @@ const MenuItem = (props) => {
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
   const addToCartHandler = (amount) => {
+    if (cartCtx.shopId !== props.shopId) {
+      cartCtx.clearCart();
+    }
     cartCtx.addItem(
       {
         id: props.id,
         name: props.name,
         amount: amount,
         price: props.price,
+        shopId: props.shopId,
       },
       token
     );

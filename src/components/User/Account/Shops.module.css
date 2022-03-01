@@ -1,8 +1,8 @@
-.shops-container {
+.article-container {
   width: 75%;
 }
 
-.shops-header {
+.article-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -34,4 +34,51 @@ h1 {
 .btn a:active {
   background-color: #212121;
   color: white;
+}
+
+/*  */
+
+.item-container {
+  margin-bottom: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 0.0625rem solid #a3a3a3;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.overview {
+  background-color: #f6f6f6;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.image-container img {
+  width: 15rem;
+}
+
+.shop-info {
+  margin-left: 1rem;
+}
+
+.btn {
+  width: 9rem;
+  height: 3rem;
+  background-color: black;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
 }

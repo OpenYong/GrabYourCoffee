@@ -3,6 +3,7 @@ import CartContext from "./cart-context";
 
 const defaultCartState = {
   items: [],
+  shopId: "",
   totalAmount: 0,
   changed: false,
 };
@@ -32,6 +33,7 @@ const cartReducer = (state, action) => {
 
     return {
       items: updatedItems,
+      shopId: action.item.shopId,
       totalAmount: updatedTotalAmount,
       changed: true,
     };
@@ -68,8 +70,9 @@ const cartReducer = (state, action) => {
 
   if (action.type === "REPLACE_CART_ITEM") {
     return {
-      items: action.items.items,
-      totalAmount: action.items.totalAmount,
+      items: action.cart.items,
+      shopId: action.cart.shopId,
+      totalAmount: action.cart.totalAmount,
     };
   }
 
@@ -94,14 +97,15 @@ const CartProvider = (props) => {
     dispatchCartAction({ type: "CLEAR_CART_ITEM" });
   };
 
-  const replaceCartHandler = (items) => {
-    dispatchCartAction({ type: "REPLACE_CART_ITEM", items });
+  const replaceCartHandler = (cart) => {
+    dispatchCartAction({ type: "REPLACE_CART_ITEM", cart });
   };
 
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     changed: cartState.changed,
+    shopId: cartState.shopId,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
     clearCart: clearCartHandler,
