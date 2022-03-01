@@ -8,8 +8,8 @@ const MenuItemForm = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
 
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const submitHandler = (e) => {
+    e.preventDefault();
 
     const enteredAmount = amountInputRef.current.value;
     const numOfEnteredAmount = +enteredAmount;

@@ -66,7 +66,15 @@ const AccountPage = () => {
               <NavLink to="shops">카페 관리</NavLink>
             </li>
             <li>
-              <NavLink to="">로그아웃</NavLink>
+              <NavLink
+                to="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  authCtx.logout();
+                }}
+              >
+                로그아웃
+              </NavLink>
             </li>
           </ul>
         </div>

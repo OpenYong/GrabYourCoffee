@@ -3,16 +3,22 @@ import styles from "./MenuItem.module.css";
 import { useContext } from "react";
 
 import CartContext from "../../../store/cart-context";
+import AuthContext from "../../../store/auth-context";
 
 const MenuItem = (props) => {
   const cartCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
+  const token = authCtx.token;
   const addToCartHandler = (amount) => {
-    cartCtx.addItem({
-      id: props.id,
-      name: props.name,
-      amount: amount,
-      price: props.price,
-    });
+    cartCtx.addItem(
+      {
+        id: props.id,
+        name: props.name,
+        amount: amount,
+        price: props.price,
+      },
+      token
+    );
   };
 
   return (

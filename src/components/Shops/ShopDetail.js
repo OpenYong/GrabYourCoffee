@@ -28,8 +28,6 @@ const ShopDetail = (props) => {
     });
   }, []);
 
-  console.log(shopData);
-
   return (
     <div className={styles["detail-container"]}>
       <div className={styles.title}>

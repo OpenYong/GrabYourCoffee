@@ -60,15 +60,15 @@ const Signup = () => {
               id: "name",
               type: "text",
             }}
-          />{" "}
+          />
           <InputLarge
-            ref={nameInput}
+            ref={emailInput}
             label="E-mail"
             input={{
               id: "email",
               type: "text",
             }}
-          />{" "}
+          />
           <InputLarge
             ref={passwordInput}
             label="Password"

@@ -14,13 +14,14 @@ const useHttp = () => {
         headers: requestConfig.headers ? requestConfig.headers : {},
       });
 
-      if (response.status !== 200) {
+      if (response.status !== 200 && response.status !== 201) {
         throw new Error("패치 데이터 실패");
       }
       const responseData = await response.json();
 
       applyData(responseData);
     } catch (e) {
+      console.log(e);
       setError(e.message || "에러 발생, 서버로부터 정보를 가져올 수 없음.");
     }
     setIsLoading(false);
