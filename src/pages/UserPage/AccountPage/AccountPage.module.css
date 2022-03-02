@@ -1,3 +1,8 @@
+.mian-container {
+  width: 100%;
+  min-height: 30rem;
+}
+
 .account-header {
   padding: 1rem;
   border-bottom: 0.0625rem solid #dedede;
@@ -12,6 +17,10 @@
 }
 .account-sidebar {
   width: 25%;
+}
+
+.sidebar-list svg {
+  margin-right: 1rem;
 }
 
 .account-sidebar ul {

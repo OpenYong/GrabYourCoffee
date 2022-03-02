@@ -52,7 +52,7 @@ const Shops = () => {
   console.log(shopData);
 
   const shopLists = (
-    <ul>
+    <ul className={styles.ul}>
       {shopData.map((shop) => (
         <li key={shop.id}>
           <div className={styles["item-container"]}>

@@ -4,6 +4,7 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/Layout/Header";
+import Footer from "./components/Layout/Footer";
 import Cart from "./components/Cart/Cart";
 
 import CartContext from "./store/cart-context";
@@ -14,6 +15,7 @@ import useHttp from "./hooks/use-http";
 import MainPage from "./pages/MainPage";
 import UserPage from "./pages/UserPage/UserPage";
 import ShopPage from "./pages/ShopsPage.js/ShopPage";
+import Nav from "./components/Layout/Nav";
 
 let isFirstLoading = true;
 
@@ -28,8 +30,6 @@ function App() {
   const { sendRequest, isLoading } = useHttp();
 
   useEffect(async () => {
-    console.log("11111");
-
     if (token) {
       try {
         const setDataFunc = (objData) => {
@@ -85,10 +85,7 @@ function App() {
     }
   }, [cartCtx]);
 
-  console.log("isLoading :  " + isLoading);
-
   const showCartHandler = () => {
-    console.log(cartCtx);
     setCartIsShown(true);
   };
 
@@ -99,6 +96,7 @@ function App() {
     <React.Fragment>
       {cartIsShow && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
+      <Nav />
       <main>
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -106,6 +104,7 @@ function App() {
           <Route path="/shops/:shopId" element={<ShopPage />} />
         </Routes>
       </main>
+      <Footer />
     </React.Fragment>
   );
 }
