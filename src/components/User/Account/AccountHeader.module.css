@@ -1,0 +1,12 @@
+.article-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+}

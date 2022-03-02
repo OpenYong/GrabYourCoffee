@@ -4,11 +4,8 @@ import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
 import Header from "./components/Layout/Header";
-import Menu from "./components/Menu/Menu";
 import Cart from "./components/Cart/Cart";
 
-import CartProvider from "./store/CartProvider";
-import { AuthProvider } from "./store/auth-context";
 import CartContext from "./store/cart-context";
 import AuthContext from "./store/auth-context";
 
@@ -28,7 +25,7 @@ function App() {
 
   const token = authCtx.token;
 
-  const { sendRequest, error, isLoading } = useHttp();
+  const { sendRequest, isLoading } = useHttp();
 
   useEffect(async () => {
     console.log("11111");
@@ -56,11 +53,16 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // console.log("cartCTX 바뀜 백엔드 전송.");
+    console.log(cartCtx.shopId);
+
     if (isFirstLoading) {
       isFirstLoading = false;
+      console.log("isFirstLoading !!!!!!!!!!!!!!!!!!!!!!");
+
       return;
     }
-    if (cartCtx.changed) {
+    if (cartCtx.changed || cartCtx.shopId === "") {
       const setDataFunc = (objData) => {
         console.log(objData);
       };

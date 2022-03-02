@@ -26,31 +26,7 @@
 
 .btn-container {
   text-align: right;
-}
-
-.btn-container button {
-  cursor: pointer;
-  background-color: transparent;
-  border: 1px solid #ff5722;
-  padding: 0.5rem 1.5rem;
-  border-radius: 25px;
-  margin-left: 1rem;
-}
-
-.btn-container button:hover,
-.btn-container button:active {
-  background-color: #ffe6dc;
-  border-color: #e64a19;
-}
-
-.btn-container .order {
-  background-color: #e64a19;
-  border-color: #e64a19;
-  color: white;
-}
-
-.btn-container .order:hover,
-.btn-container .order:active {
-  background-color: #d84315;
-  border-color: #e64a19;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
 }

@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import Button from "../UI/Button";
 
 import styles from "./Checkout.module.css";
 
@@ -60,10 +61,14 @@ const Checkout = (props) => {
         )}
       </div>
       <div className={styles.actions}>
-        <button type="button" onClick={props.onClose}>
-          취소
-        </button>
-        <button className={styles.submit}>확인</button>
+        <Button className="cancel">
+          <button type="button" onClick={props.onClose}>
+            취소
+          </button>
+        </Button>
+        <Button>
+          <button className={styles.submit}>확인</button>
+        </Button>
       </div>
     </form>
   );

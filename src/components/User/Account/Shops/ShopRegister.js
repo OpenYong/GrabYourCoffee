@@ -2,7 +2,11 @@ import React, { useRef, useContext } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import AuthContext from "../../../store/auth-context";
+import AuthContext from "../../../../store/auth-context";
+
+import InputLarge from "../../../UI/InputLarge";
+import AccountHeader from "../AccountHeader";
+import Button from "../../../UI/Button";
 
 import styles from "./ShopRegister.module.css";
 
@@ -51,7 +55,7 @@ const ShopRegister = () => {
       })
       .then((resData) => {
         console.log(resData);
-        navigate("../shops");
+        navigate("../");
       })
       .catch((error) => {
         console.log(error);
@@ -59,35 +63,65 @@ const ShopRegister = () => {
   };
 
   return (
-    <div>
+    <div className={styles["article-container"]}>
+      <AccountHeader headerText="카페 등록"></AccountHeader>
       <form onSubmit={registerHandler} className={styles.form}>
-        <input name="name" placeholder="카페 이름" ref={nameInput} />
-        <br />
-        <input
-          name="description"
-          placeholder="카페 설명"
+        <InputLarge
+          ref={nameInput}
+          label="카페 이름"
+          input={{
+            id: "name",
+            type: "text",
+          }}
+        />
+        <InputLarge
           ref={descriptionInput}
+          label="카페 설명"
+          input={{
+            id: "description",
+            type: "text",
+          }}
         />
-        <br />
-        <p>테이블, 주차장 유무를 선택해주세요:</p>
-        <input
-          type="checkbox"
-          id="hasTables"
-          name="hasTables"
-          ref={hasTablesInput}
-        />
-        <label htmlFor="scales">테이블</label>
-        <input
-          type="checkbox"
-          id="hasParkingLot"
-          name="hasParkingLot"
-          ref={hasParkingLotInput}
-        />
-        <label htmlFor="scales">주차장</label>
-        <br />
-        <input type="file" name="image" ref={fileInput} />
-        <br />
-        <button>등록</button>
+        <div>
+          <h3>테이블, 주차장 유무</h3>
+          <input
+            type="checkbox"
+            id="hasTables"
+            name="hasTables"
+            ref={hasTablesInput}
+          />
+          <label htmlFor="hasTables">
+            <span>테이블</span>
+          </label>
+          <input
+            type="checkbox"
+            id="hasParkingLot"
+            name="hasParkingLot"
+            ref={hasParkingLotInput}
+          />
+          <label htmlFor="hasParkingLot">
+            <span>주차장</span>
+          </label>
+        </div>
+        <div>
+          <h3>카페 이미지</h3>
+          <input type="file" name="image" ref={fileInput} />
+        </div>
+        <div className={styles["btn-container"]}>
+          <Button className="cancel">
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("../");
+              }}
+            >
+              취소
+            </button>
+          </Button>
+          <Button>
+            <button>등록</button>
+          </Button>
+        </div>
       </form>
     </div>
   );

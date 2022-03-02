@@ -1,22 +1,26 @@
-import React, { useRef, useContext, useState } from "react";
+import React, { useRef, useContext, useState, useEffect } from "react";
 
 import { useNavigate, useLocation } from "react-router-dom";
 
-import AuthContext from "../../../store/auth-context";
+import AuthContext from "../../../../store/auth-context";
 
 import styles from "./ShopManagement.module.css";
 
-import useHttp from "../../../hooks/use-http";
-
-import Modal from "../../UI/Modal";
-
+import useHttp from "../../../../hooks/use-http";
 import MenuRegister from "./MenuRegister";
+
+import AccountHeader from "../AccountHeader";
+import Menu from "./Menu";
 
 const ShopManagement = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { sendRequest, error } = useHttp();
+  const { sendRequest } = useHttp();
   const shopData = location.state;
+  const shopId = shopData.id;
+
+  const [menu, setMenu] = useState([]);
+  const [showMenuRegister, setShowMenuRegister] = useState(false);
 
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
@@ -26,7 +30,25 @@ const ShopManagement = (props) => {
   const hasParkingLotInput = useRef();
   const fileInput = useRef();
 
-  const [showMenuRegister, setShowMenuRegister] = useState(false);
+  useEffect(() => {
+    const setDataFunc = (objData) => {
+      const menu = objData.menu;
+      let arrayData = [];
+      for (const key in menu) {
+        arrayData.push(menu[key]);
+      }
+      setMenu(arrayData);
+    };
+
+    sendRequest(
+      {
+        url: `http://localhost:8080/shop/menu/${shopId}`,
+      },
+      setDataFunc
+    );
+  }, [showMenuRegister]);
+
+  console.log(menu);
 
   const updateHandler = async (e) => {
     e.preventDefault();
@@ -90,6 +112,29 @@ const ShopManagement = (props) => {
     }
   };
 
+  const menuDeleteHandler = async (menuId) => {
+    const result = window.confirm("메뉴를 정말 삭제 하시곘습니까?");
+    if (result) {
+      const setResponse = (objData) => {
+        console.log(objData);
+      };
+      sendRequest(
+        {
+          url: `http://localhost:8080/shop/menu/${menuId}`,
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        setResponse
+      );
+      // navigate("");
+      await setMenu((prevMenu) =>
+        prevMenu.filter((prevState) => prevState._id !== menuId)
+      );
+    }
+  };
+
   const showModalHandler = () => {
     setShowMenuRegister(true);
   };
@@ -103,34 +148,20 @@ const ShopManagement = (props) => {
       {showMenuRegister && (
         <MenuRegister onClose={hideModalHandler} token={token} />
       )}
-      <h2>{shopData.shopName} </h2>
-      <form onSubmit={updateHandler} className={styles.form}>
-        <input
-          name="description"
-          placeholder="카페 설명"
-          ref={descriptionInput}
-        />
-        <br />
-        <p>테이블, 주차장 유무:</p>
-        <input
-          type="checkbox"
-          id="hasTables"
-          name="hasTables"
-          ref={hasTablesInput}
-        />
-        <label htmlFor="scales">테이블</label>
-        <input
-          type="checkbox"
-          id="hasParkingLot"
-          name="hasParkingLot"
-          ref={hasParkingLotInput}
-        />
-        <label htmlFor="scales">주차장</label>
-        <br />
-        <input type="file" name="image" ref={fileInput} />
-        <br />
-        <button>업데이트</button>
-      </form>
+      <AccountHeader headerText="상세 보기">
+        <div>수정하기</div>
+      </AccountHeader>
+      <div>
+        <h3>카페 이름</h3>
+        <div className={styles["samll-text"]}>{shopData.shopName}</div>
+      </div>
+      <div>
+        <h3>카페 설명 </h3>
+        <div className={styles["samll-text"]}>{shopData.description}</div>
+      </div>
+      <div>
+        <Menu menuData={menu} onDelete={menuDeleteHandler} />
+      </div>
       <button onClick={deleteHandler}>등록된 카페 삭제</button>
       <div>
         <button onClick={showModalHandler}>메뉴 등록</button>

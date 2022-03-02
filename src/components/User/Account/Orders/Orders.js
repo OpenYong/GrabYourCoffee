@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import styles from "./Shops.module.css";
+import styles from "../Shops/Shops.module.css";
 
-import useHttp from "../../../hooks/use-http";
+import useHttp from "../../../../hooks/use-http";
+
+import Button from "../../../UI/Button";
+import AccountHeader from "../AccountHeader";
 
 const Orders = (props) => {
   const { sendRequest, error, isLoading } = useHttp();
@@ -72,11 +75,11 @@ const Orders = (props) => {
                 <h3>{order.id}</h3>
               </div>
               <div className={styles["button-container"]}>
-                <div className={styles.btn}>
+                <Button>
                   <Link to={`details/${order.id}`} state={order}>
                     상세 보기
                   </Link>
-                </div>
+                </Button>
               </div>
             </div>
             <div className={styles.overview}>
@@ -86,15 +89,15 @@ const Orders = (props) => {
               <div className={styles["shop-info"]}>
                 <div>
                   <h4>주문 가게</h4>
-                  <p>{order.shopName}</p>
+                  <span>{order.shopName}</span>
                 </div>
                 <div>
                   <h4>주문 일자</h4>
-                  <p>{order.date}</p>
+                  <span>{order.date}</span>
                 </div>
                 <div>
                   <h4>주문 금액</h4>
-                  <p>{order.totalAmount}원</p>
+                  <span>{order.totalAmount}원</span>
                 </div>
               </div>
             </div>
@@ -106,10 +109,7 @@ const Orders = (props) => {
 
   return (
     <div className={styles["article-container"]}>
-      <div className={styles["article-header"]}>
-        <h1>주문 내역</h1>
-        <div className={styles.btn}>{/* <Link to="/">등록</Link> */}</div>
-      </div>
+      <AccountHeader headerText="주문 내역"></AccountHeader>
       {orderLists}
     </div>
   );

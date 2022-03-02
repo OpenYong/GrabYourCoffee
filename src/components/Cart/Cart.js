@@ -6,6 +6,7 @@ import AuthContext from "../../store/auth-context";
 import Modal from "../UI/Modal";
 import Checkout from "./Checkout";
 import CartItem from "./CartItem";
+import Button from "../UI/Button";
 
 import styles from "./Cart.module.css";
 
@@ -38,10 +39,11 @@ const Cart = (props) => {
   };
 
   const submitOrderHandler = async (userData) => {
-    console.log(cartCtx);
+    // console.log(cartCtx);
     const requestFunc = (dataObj) => {
       console.log(dataObj);
     };
+
     sendRequest(
       {
         url: `http://localhost:8080/user/order/${cartCtx.shopId}`,
@@ -58,10 +60,11 @@ const Cart = (props) => {
         }),
       },
       requestFunc
-    );
+    ).then(() => {
+      cartCtx.clearCart();
+    });
 
     setDidSubmit(true);
-    cartCtx.clearCart();
   };
 
   const cartItems = (
@@ -94,11 +97,15 @@ const Cart = (props) => {
       )}
       {!isCheckout && (
         <div className={styles["btn-container"]}>
-          <button onClick={props.onClose}>닫기</button>
+          <Button className="cancel">
+            <button onClick={props.onClose}>닫기</button>
+          </Button>
           {!isCartEmpty && (
-            <button className={styles.order} onClick={orderHandler}>
-              주문하기
-            </button>
+            <Button>
+              <button className={styles.order} onClick={orderHandler}>
+                주문하기
+              </button>
+            </Button>
           )}
         </div>
       )}

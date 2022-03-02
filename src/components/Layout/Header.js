@@ -25,7 +25,7 @@ const Header = (props) => {
           )}
           {isLoggedIn && (
             <Link to="/user/account" className={`${styles.button}  `}>
-              <span>My Account</span>
+              <span>MY ACCOUNT</span>
             </Link>
           )}
           <span className={styles.seperator}></span>

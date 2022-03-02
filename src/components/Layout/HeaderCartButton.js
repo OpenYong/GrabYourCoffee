@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 
-import CartIcon from "../Cart/CartIcon";
+// import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../store/cart-context";
+import CartIcon from "../../assets/shopping-cart.png";
 
 import styles from "./HeaderCartButton.module.css";
 
@@ -37,7 +38,7 @@ const HeaderCartButton = (props) => {
     >
       <span>CART</span>
       <span className={styles.icon}>
-        <CartIcon />
+        <img src={CartIcon}></img>
       </span>
       <span className={styles.badge}>{numberOfCartItems}</span>
     </button>

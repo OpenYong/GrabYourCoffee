@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
 import { useParams } from "react-router-dom";
 
-import Modal from "../../UI/Modal";
+import Modal from "../../../UI/Modal";
 
-import useHttp from "../../../hooks/use-http";
+import useHttp from "../../../../hooks/use-http";
 
 const MenuRegister = (props) => {
   const { token } = props;
-  const { sendRequest, error } = useHttp();
+  const { sendRequest, error, isLoading } = useHttp();
 
   const params = useParams();
   const shopId = params.shopId;
@@ -43,7 +43,9 @@ const MenuRegister = (props) => {
         console.log(data);
       }
     );
-    props.onClose();
+    if (!isLoading) {
+      props.onClose();
+    }
   };
 
   return (

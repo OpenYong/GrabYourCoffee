@@ -1,52 +1,18 @@
-import React, { useEffect, useContext, useState } from "react";
+import React, { useContext } from "react";
 
 import { NavLink, Routes, Route, Link } from "react-router-dom";
 
 import Profile from "../../../components/User/Account/Profile";
-import Shops from "../../../components/User/Account/Shops";
-import Orders from "../../../components/User/Account/Orders";
-
-import ShopRegister from "../../../components/User/Account/ShopRegister";
-import ShopManagement from "../../../components/User/Account/ShopManagement";
-
 import AuthContext from "../../../store/auth-context";
+
+import ShopsPage from "./ShopsPage";
+import OrdersPage from "./OrdersPage";
 
 import styles from "./AccountPage.module.css";
 
 const AccountPage = () => {
-  const [userData, setUserData] = useState({});
   const authCtx = useContext(AuthContext);
-
   const token = authCtx.token;
-
-  // useEffect(() => {
-  //   const fetchShopLists = async () => {
-  //     const response = await fetch(`http://localhost:8080/auth/info`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-
-  //     if (response.status === 404) {
-  //       throw new Error("찾을 수 없는 데이터");
-  //     }
-
-  //     const responseData = await response.json();
-  //     console.log(responseData);
-
-  //     // setShopData({
-  //     //   shopName: responseData.shop.shopName,
-  //     //   imageUrl: `http://localhost:8080/${responseData.shop.imageUrl}`,
-  //     //   description: responseData.shop.description,
-  //     //   hasParkingLot: responseData.shop.hasParkingLot,
-  //     //   hasTables: responseData.shop.hasTables,
-  //     // });
-  //   };
-
-  //   fetchShopLists().catch((error) => {
-  //     console.log(error);
-  //   });
-  // }, []);
 
   return (
     <div>
@@ -80,10 +46,8 @@ const AccountPage = () => {
         </div>
         <Routes>
           <Route path="profile" element={<Profile />} />
-          <Route path="orders" element={<Orders token={token} />} />
-          <Route path="shops" element={<Shops />} />
-          <Route path="shops/register" element={<ShopRegister />} />
-          <Route path="shops/details/:shopId" element={<ShopManagement />} />
+          <Route path="orders/*" element={<OrdersPage />} />
+          <Route path="shops/*" element={<ShopsPage />} />
         </Routes>
       </div>
     </div>

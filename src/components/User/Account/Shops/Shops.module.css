@@ -1,0 +1,62 @@
+.article-container {
+  width: 75%;
+}
+
+/*  */
+
+.item-container {
+  margin-bottom: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 0.0625rem solid #a3a3a3;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.overview {
+  background-color: #f6f6f6;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.image-container img {
+  width: 15rem;
+}
+
+.shop-info {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.shop-info h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.shop-info span {
+  font-size: 0.9rem;
+  font-weight: 300;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.header h3 {
+  font-size: 1.15rem;
+  font-weight: 400;
+}

@@ -1,8 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
-import styles from "./Shops.module.css";
-
-import AuthContext from "../../../store/auth-context";
 import { Link } from "react-router-dom";
+
+import AuthContext from "../../../../store/auth-context";
+
+import Button from "../../../UI/Button";
+import AccountHeader from "../AccountHeader";
+
+import styles from "./Shops.module.css";
 
 const Shops = () => {
   const [shopData, setShopData] = useState([]);
@@ -54,14 +58,14 @@ const Shops = () => {
           <div className={styles["item-container"]}>
             <div className={styles.header}>
               <div>
-                <h3>id</h3>
+                <h3>#{shop.id}</h3>
               </div>
               <div className={styles["button-container"]}>
-                <div className={styles.btn}>
+                <Button>
                   <Link to={`details/${shop.id}`} state={shop}>
                     상세 보기
                   </Link>
-                </div>
+                </Button>
               </div>
             </div>
             <div className={styles.overview}>
@@ -70,10 +74,8 @@ const Shops = () => {
               </div>
               <div className={styles["shop-info"]}>
                 <div>
-                  <h3>{shop.shopName}</h3>
-                </div>
-                <div>
-                  <p>{shop.description}</p>
+                  <h4>{shop.shopName}</h4>
+                  <span>{shop.description}</span>
                 </div>
               </div>
             </div>
@@ -86,10 +88,11 @@ const Shops = () => {
   return (
     <div className={styles["article-container"]}>
       <div className={styles["article-header"]}>
-        <h1>카페 관리</h1>
-        <div className={styles.btn}>
-          <Link to="register">등록</Link>
-        </div>
+        <AccountHeader headerText="카페 관리">
+          <Button>
+            <Link to="register">등록</Link>
+          </Button>
+        </AccountHeader>
       </div>
       {shopLists}
     </div>
