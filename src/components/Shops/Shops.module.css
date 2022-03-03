@@ -1,4 +1,6 @@
 .shops-container {
+  width: 100%;
+  max-width: 1600px;
   padding: 0 3rem;
   margin-bottom: 3rem;
 }

@@ -46,10 +46,12 @@ const Signup = () => {
   return (
     <LoginSignupUI>
       <div className={styles.sidebar}>
-        <h1>회원가입을 해봅시다!</h1>
-        <h2>
-          이미 계정이 있으신가요? <Link to="/user/login">로그인하기</Link>
-        </h2>
+        <div className={styles["sidebar-container"]}>
+          <h1>회원가입을 해봅시다!</h1>
+          <h2>
+            이미 계정이 있으신가요? <Link to="/user/login">로그인하기</Link>
+          </h2>
+        </div>
       </div>
       <div className={styles.article}>
         <form onSubmit={signupHandler}>

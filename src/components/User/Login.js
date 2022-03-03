@@ -40,7 +40,6 @@ const Login = (props) => {
         return res.json();
       })
       .then((resData) => {
-        console.log(resData);
         const expTime = new Date(
           new Date().getTime() + resData.expiresIn * 1000
         );
@@ -55,10 +54,12 @@ const Login = (props) => {
   return (
     <LoginSignupUI>
       <div className={styles.sidebar}>
-        <h1>안녕하세요 :) 로그인 해주세요.</h1>
-        <h2>
-          처음 오셨나요? <Link to="/user/register">회원 가입 하기</Link>
-        </h2>
+        <div className={styles["sidebar-container"]}>
+          <h1>안녕하세요 :) 로그인 해주세요.</h1>
+          <h2>
+            처음 오셨나요? <Link to="/user/register">회원 가입 하기</Link>
+          </h2>
+        </div>
       </div>
       <div className={styles.article}>
         <form onSubmit={loginHandler} className={styles.form}>

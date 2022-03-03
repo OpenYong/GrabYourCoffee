@@ -13,23 +13,25 @@ const Header = (props) => {
 
   return (
     <Fragment>
-      <header className={styles.header}>
-        <span className={styles.logo}>
-          <Link to="/">Grab Your Coffee</Link>
-        </span>
-        <div className={styles.buttonContainer}>
-          {!isLoggedIn && (
-            <Link to="/user/login" className={`${styles.button}  `}>
-              <span>LOG IN</span>
-            </Link>
-          )}
-          {isLoggedIn && (
-            <Link to="/user/account" className={`${styles.button}  `}>
-              <span>MY ACCOUNT</span>
-            </Link>
-          )}
-          <span className={styles.seperator}></span>
-          <HeaderCartButton onClick={props.onShowCart} />
+      <header>
+        <div className={styles.header}>
+          <span className={styles.logo}>
+            <Link to="/">Grab Your Coffee</Link>
+          </span>
+          <div className={styles.buttonContainer}>
+            {!isLoggedIn && (
+              <Link to="/user/login" className={`${styles.button}  `}>
+                <span>LOG IN</span>
+              </Link>
+            )}
+            {isLoggedIn && (
+              <Link to="/user/account" className={`${styles.button}  `}>
+                <span>MY ACCOUNT</span>
+              </Link>
+            )}
+            <span className={styles.seperator}></span>
+            <HeaderCartButton onClick={props.onShowCart} />
+          </div>
         </div>
       </header>
     </Fragment>

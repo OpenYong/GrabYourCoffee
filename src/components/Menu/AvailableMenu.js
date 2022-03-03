@@ -31,8 +31,6 @@ const AvailableMenu = (props) => {
     );
   }, []);
 
-  // console.log(menu);
-
   if (error) {
     return (
       <section className={styles.MenuError}>
@@ -49,6 +47,7 @@ const AvailableMenu = (props) => {
       description={item.description}
       price={item.price}
       shopId={shopId}
+      imageUrl={item.imageUrl}
     />
   ));
 

@@ -10,7 +10,6 @@ import OrdersPage from "./OrdersPage";
 
 import styles from "./AccountPage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRectangleList } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowRightFromBracket,
   faCircleUser,
@@ -19,18 +18,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const AccountPage = () => {
-  const location = useLocation();
+  // const location = useLocation();
   const authCtx = useContext(AuthContext);
-  const token = authCtx.token;
-
-  console.log(location);
+  // const token = authCtx.token;
 
   return (
     <div className={styles["mian-container"]}>
-      <div className={styles["account-header"]}>
+      {/* <div className={styles["account-header"]}>
         <Link to="profile">Account</Link>
         <span> / </span>
-      </div>
+      </div> */}
       <div className={styles["account-container"]}>
         <div className={styles["account-sidebar"]}>
           <ul className={styles["sidebar-list"]}>

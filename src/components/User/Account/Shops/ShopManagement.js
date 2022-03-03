@@ -48,8 +48,6 @@ const ShopManagement = (props) => {
     );
   }, [showMenuRegister]);
 
-  console.log(menu);
-
   const updateHandler = async (e) => {
     e.preventDefault();
 
@@ -116,7 +114,7 @@ const ShopManagement = (props) => {
     const result = window.confirm("메뉴를 정말 삭제 하시곘습니까?");
     if (result) {
       const setResponse = (objData) => {
-        console.log(objData);
+        // console.log(objData);
       };
       sendRequest(
         {

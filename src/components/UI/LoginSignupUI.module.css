@@ -1,4 +1,6 @@
 .main-container {
+  width: 100%;
+  /* max-width: 1600px; */
   display: flex;
   flex-direction: row;
   min-height: 30rem;
@@ -20,8 +22,15 @@
 .sidebar {
   width: 50%;
   height: 100%;
-  padding: 6rem 4rem;
   background-color: #f6f6f6;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sidebar-container {
+  width: 100%;
+  max-width: 800px;
+  padding: 6rem 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

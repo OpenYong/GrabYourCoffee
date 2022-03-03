@@ -38,8 +38,6 @@ const ShopRegister = () => {
     formData.append("hasParkingLot", enteredParkingOption);
     formData.append("image", pickedImage[0]);
 
-    console.log(formData);
-
     await fetch("http://localhost:8080/shop/register", {
       method: "POST",
       body: formData,

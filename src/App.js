@@ -33,7 +33,6 @@ function App() {
     if (token) {
       try {
         const setDataFunc = (objData) => {
-          console.log(objData.cart);
           cartCtx.replaceCart(objData.cart);
         };
 
@@ -53,13 +52,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // console.log("cartCTX 바뀜 백엔드 전송.");
-    console.log(cartCtx.shopId);
-
     if (isFirstLoading) {
       isFirstLoading = false;
-      console.log("isFirstLoading !!!!!!!!!!!!!!!!!!!!!!");
-
       return;
     }
     if (cartCtx.changed || cartCtx.shopId === "") {

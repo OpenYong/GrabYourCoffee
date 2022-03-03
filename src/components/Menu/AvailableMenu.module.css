@@ -1,6 +1,7 @@
 .menu {
   /* max-width: 60rem; */
   width: 40%;
+  min-width: 25rem;
   padding-top: 8.5rem;
   margin-right: 2rem;
   animation: meals-appear 1s ease-out forwards;

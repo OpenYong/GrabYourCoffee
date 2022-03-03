@@ -50,7 +50,6 @@ export const AuthProvider = (props, expTime) => {
     setToken(null);
     localStorage.removeItem("token");
     localStorage.removeItem("expTime");
-    console.log("log - out");
 
     // 로그아웃을 할 때, logoutTimer가 있다면 logoutTimer를 없앤다.
     if (logoutTimer) {
@@ -62,8 +61,6 @@ export const AuthProvider = (props, expTime) => {
     setToken(token);
     localStorage.setItem("token", token);
     localStorage.setItem("expTime", expTime);
-
-    console.log("loginHandler");
 
     const remainingTime = calTime(expTime); // 남은 시간 계산
 

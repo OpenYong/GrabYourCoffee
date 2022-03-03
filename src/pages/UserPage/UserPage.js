@@ -18,25 +18,21 @@ const UserPage = () => {
 
   return (
     <React.Fragment>
-      <main>
-        <Routes>
-          <Route path="login" element={<Login />} />
-          {!authCtx.isLoggedIn && (
-            <Route path="register" element={<Signup />} />
-          )}
-          <Route
-            path="account/*"
-            element={
-              authCtx.isLoggedIn ? (
-                <AccountPage />
-              ) : (
-                <Navigate replace to="/user/login" />
-              )
-            }
-          />
-          <Route path="*" element={<Navigate replace to="/" />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="login" element={<Login />} />
+        {!authCtx.isLoggedIn && <Route path="register" element={<Signup />} />}
+        <Route
+          path="account/*"
+          element={
+            authCtx.isLoggedIn ? (
+              <AccountPage />
+            ) : (
+              <Navigate replace to="/user/login" />
+            )
+          }
+        />
+        <Route path="*" element={<Navigate replace to="/" />} />
+      </Routes>
     </React.Fragment>
   );
 };

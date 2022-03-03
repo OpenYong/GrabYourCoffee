@@ -5,6 +5,7 @@
 
 .img img {
   width: 100%;
+  /* max-width: 40rem; */
   margin-bottom: 1.5rem;
 }
 

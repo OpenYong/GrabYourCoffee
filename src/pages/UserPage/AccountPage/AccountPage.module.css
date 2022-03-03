@@ -1,6 +1,8 @@
 .mian-container {
   width: 100%;
+  max-width: 1600px;
   min-height: 30rem;
+  padding: 0 3rem;
 }
 
 .account-header {

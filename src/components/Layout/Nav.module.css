@@ -1,7 +1,11 @@
+nav {
+  border-bottom: 1.5px #bdbdbd solid;
+}
+
 .main-container {
   width: 100%;
+  max-width: 1600px;
   height: 3rem;
-  border-bottom: 1.5px #bdbdbd solid;
   padding: 0 3rem;
 }
 

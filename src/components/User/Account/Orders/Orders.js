@@ -17,8 +17,6 @@ const Orders = (props) => {
 
   useEffect(() => {
     const setDataFunc = (objData) => {
-      console.log(objData.orders);
-
       let orderData = [];
       let orderedItemsData = [];
 
@@ -49,6 +47,7 @@ const Orders = (props) => {
           imageUrl: `http://localhost:8080/${objData.orders[key].imageUrl}`,
         });
       }
+      orderData = orderData.reverse();
 
       setOrderData(orderData);
       setOrderedItems(orderedItemsData);
@@ -72,7 +71,7 @@ const Orders = (props) => {
           <div className={styles["item-container"]}>
             <div className={styles.header}>
               <div>
-                <h3>{order.id}</h3>
+                <h3>Order # </h3>
               </div>
               <div className={styles["button-container"]}>
                 <Button>
