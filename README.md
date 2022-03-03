@@ -44,6 +44,9 @@ Project-01은 어플리케이션의 프론트엔드를 포함하고 있습니다
 * Express
 * MongoDB
 * Mongoose
+* jwt
+* bcryptjs
+* multer
 
 
 ## 시작하기
@@ -77,13 +80,20 @@ MONGO_URI=여러분의API키
 ```
 다음과 같이 저장해주시기 바랍니다.
 
-### Step 4. 실행
+### Step 3. 실행
 
 각 폴더에서 터미널을 실행한 후 다음 명령어를 입력해주세요.
 ```
 npm start
 ```
+프론트엔드는 3000번 포트, 백엔드는 8080번 포트입니다.
+웹 페이지를 보기위해서는 브라우저에서 3000번 포트로 접속해주세요.
 
 ## 스크린샷
 
-
+![Project-01-Main](https://user-images.githubusercontent.com/61618536/156514588-7ea95dae-af93-49b5-92f4-d795efec78d4.jpeg)
+![Project-01-Login](https://user-images.githubusercontent.com/61618536/156514633-1a558aa7-475d-4bf3-b4b8-f0697d3b764b.jpeg)
+![Project-01-ShopDetail](https://user-images.githubusercontent.com/61618536/156514659-a034a4bc-b736-4335-8f7e-486da6fab470.jpeg)
+![Project-01-Order](https://user-images.githubusercontent.com/61618536/156514678-94263440-3431-4135-aaac-96c68dfcb6ee.jpeg)
+![Project-01-OrderDetail](https://user-images.githubusercontent.com/61618536/156514690-e86e5341-8ff1-4c93-bedd-18e24b036274.jpeg)
+![Project-01-MyShop](https://user-images.githubusercontent.com/61618536/156514767-8b5201fb-8ea1-40f0-ad55-461ce13ec9b9.jpeg)
