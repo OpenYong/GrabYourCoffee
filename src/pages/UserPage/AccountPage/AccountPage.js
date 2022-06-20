@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { NavLink, Routes, Route, Link, useLocation } from "react-router-dom";
 
-import Profile from "../../../components/User/Account/Profile";
+import Profile from "../../../components/User/Account/Profile/Profile";
 import AuthContext from "../../../store/auth-context";
 
 import ShopsPage from "./ShopsPage";

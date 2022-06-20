@@ -1,0 +1,20 @@
+.container {
+  width: 100%;
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.profile-container {
+  padding: 1rem;
+  border-top: 1px solid;
+  background-color: #f5f5f5;
+}
