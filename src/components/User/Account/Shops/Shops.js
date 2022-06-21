@@ -51,7 +51,9 @@ const Shops = () => {
 
   console.log(shopData);
 
-  const shopLists = (
+  let shopLists;
+
+  shopLists = (
     <ul className={styles.ul}>
       {shopData.map((shop) => (
         <li key={shop.id}>
@@ -84,6 +86,14 @@ const Shops = () => {
       ))}
     </ul>
   );
+
+  if (shopData.length === 0) {
+    shopLists = (
+      <>
+        <p>등록된 카페가 없습니다.</p>
+      </>
+    );
+  }
 
   return (
     <div className={styles["article-container"]}>

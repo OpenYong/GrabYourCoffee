@@ -17,4 +17,11 @@
   padding: 1rem;
   border-top: 1px solid;
   background-color: #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-edit {
+  color: #176bdb;
+  font-size: 0.9rem;
 }
